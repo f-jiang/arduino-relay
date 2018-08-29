@@ -1,7 +1,9 @@
 #include "Relay.h"
 #include "Arduino.h"
 
-Relay::Relay(int p, Relay::Mode m) : m_pin(p), m_mode(m)
+Relay::Relay(int p, Relay::Mode m) : m_pin(p), m_mode(m), m_isActivated(false) { }
+
+void Relay::begin()
 {
     pinMode(m_pin, OUTPUT);
     deactivate();

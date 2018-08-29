@@ -4,10 +4,10 @@
 class Relay {
 public:
     /*
-     * NORMALLY_OPEN: Energizing the coil by calling activate() 
+     * NORMALLY_OPEN: Energizing the coil by calling activate()
      * completes the circuit controlled by the relay.
      *
-     * NORMALLY_CLOSED: Energizing the coil by calling activate() 
+     * NORMALLY_CLOSED: Energizing the coil by calling activate()
      * opens the circuit controlled by the relay.
      */
     enum Mode {
@@ -19,6 +19,11 @@ public:
      * Instatiate a Relay. Requires pin and mode to be set.
      */
     Relay(int, Mode);
+
+    /*
+     * Initialize the Relay by initializing its pin and de-energizing the coil.
+     */
+    void begin();
 
     /*
      * Returns the digital pin used by the Arduino to control the relay.
