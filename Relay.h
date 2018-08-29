@@ -10,17 +10,20 @@ class Relay {
 
         Relay(int, Mode);
 
-        int GetPin();
-        Mode GetMode();
+        int getPin() const;
+        Mode getMode() const;
+        bool isActivated() const;
+        bool isClosed() const;
 
-        void Activate();
-        void Deactivate();
-        void Open();
-        void Close();
+        void activate();
+        void deactivate();
+        void open();
+        void close();
 
     private:
         int m_pin;
         Mode m_mode;
+        bool m_isActivated;
 
 };
 

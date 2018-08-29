@@ -1,32 +1,52 @@
 #include "Relay.h"
 #include "Arduino.h"
 
-Relay::Relay(int p, Relay::Mode m) : m_pin(p), m_mode(m) {
+Relay::Relay(int p, Relay::Mode m) : m_pin(p), m_mode(m)
+{
     pinMode(m_pin, OUTPUT);
-    Deactivate();    
+    deactivate();
 }
 
-int Relay::GetPin() {
+int Relay::getPin() const
+{
     return m_pin;
 }
 
-Relay::Mode Relay::GetMode() {
+Relay::Mode Relay::getMode() const
+{
     return m_mode;
 }
 
-void Relay::Activate() {
+bool Relay::isActivated() const
+{
+    return m_isActivated;
+}
+
+bool Relay::isClosed() const
+{
+    return (m_mode == NORMALLY_OPEN && isActivated()) ||
+           (m_mode == NORMALLY_CLOSED && !isActivated());
+}
+
+void Relay::activate()
+{
     digitalWrite(m_pin, LOW);
+    m_isActivated = true;
 }
 
-void Relay::Deactivate() {
+void Relay::deactivate()
+{
     digitalWrite(m_pin, HIGH);
+    m_isActivated = false;
 }
 
-void Relay::Open() {
-    (m_mode == NORMALLY_OPEN) ? Deactivate() : Activate(); 
+void Relay::open()
+{
+    (m_mode == NORMALLY_OPEN) ? deactivate() : activate();
 }
 
-void Relay::Close() {
-    (m_mode == NORMALLY_OPEN) ? Activate() : Deactivate(); 
+void Relay::close()
+{
+    (m_mode == NORMALLY_OPEN) ? activate() : deactivate();
 }
 
