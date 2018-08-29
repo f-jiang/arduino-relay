@@ -1,0 +1,10 @@
+Relay	KEYWORD1
+getPin	KEYWORD2
+getMode	KEYWORD2
+isActivated	KEYWORD2
+isClosed	KEYWORD2
+activate	KEYWORD2
+deactivate	KEYWORD2
+open	KEYWORD2
+close	KEYWORD2
+
