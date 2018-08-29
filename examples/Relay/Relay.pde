@@ -21,6 +21,7 @@ void setup()
 {
     pinMode(RELAY_PIN, OUTPUT); // Set up the pin used to control the relay
     Serial.begin(9600);
+    relay.begin();              // Initialize the relay
 
     Serial.print("Relay mode is ");
     Serial.print(relay.getMode());
