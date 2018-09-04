@@ -32,13 +32,13 @@ bool Relay::isClosed() const
 
 void Relay::activate()
 {
-    digitalWrite(m_pin, LOW);
+    digitalWrite(m_pin, HIGH);
     m_isActivated = true;
 }
 
 void Relay::deactivate()
 {
-    digitalWrite(m_pin, HIGH);
+    digitalWrite(m_pin, LOW);
     m_isActivated = false;
 }
 
